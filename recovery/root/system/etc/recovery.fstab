@@ -1,4 +1,3 @@
-# Android fstab file for OrangeFox Recovery (OnePlus 11R - udon / aston / CPH2487)
 # <src>                                      <mnt_point>  <type>  <mnt_flags and options>                             <fs_mgr_flags>
 
 # Dynamic Super Partitions
@@ -12,7 +11,6 @@ odm_dlkm                                     /odm_dlkm    erofs   ro            
 
 # Flashable Images & Boot Partitions
 /dev/block/bootdevice/by-name/boot           /boot        emmc    defaults                                            flags=display="Boot";backup=1;flashimg=1;slotselect
-/dev/block/bootdevice/by-name/init_boot      /init_boot   emmc    defaults                                            flags=display="Init Boot";backup=1;flashimg=1;slotselect
 /dev/block/bootdevice/by-name/vendor_boot    /vendor_boot emmc    defaults                                            flags=display="Vendor Boot";backup=1;flashimg=1;slotselect
 /dev/block/bootdevice/by-name/dtbo           /dtbo        emmc    defaults                                            flags=display="DTBO";backup=1;flashimg=1;slotselect
 /dev/block/bootdevice/by-name/recovery       /recovery    emmc    defaults                                            flags=display="Recovery";backup=1;flashimg=1;slotselect
@@ -25,11 +23,9 @@ odm_dlkm                                     /odm_dlkm    erofs   ro            
 
 # Modem & Firmware
 /dev/block/bootdevice/by-name/modem          /modem       emmc    defaults                                            flags=display="Modem / Baseband";backup=1;slotselect
-/dev/block/bootdevice/by-name/bluetooth      /bluetooth   emmc    defaults                                            flags=display="Bluetooth Firmware";backup=1;slotselect
-/dev/block/bootdevice/by-name/dsp            /dsp         emmc    defaults                                            flags=display="DSP Firmware";backup=1;slotselect
 /dev/block/bootdevice/by-name/vbmeta         /vbmeta      emmc    defaults                                            flags=display="VBMeta";backup=1;flashimg=1;slotselect
-/dev/block/bootdevice/by-name/vbmeta_system  /vbmeta_sys  emmc    defaults                                            flags=display="VBMeta System";backup=1;flashimg=1;slotselect
-/dev/block/bootdevice/by-name/vbmeta_vendor  /vbmeta_ven  emmc    defaults                                            flags=display="VBMeta Vendor";backup=1;flashimg=1;slotselect
+/dev/block/bootdevice/by-name/vbmeta_system  /vbmeta_system  emmc    defaults                                            flags=display="VBMeta System";backup=1;flashimg=1;slotselect
+/dev/block/bootdevice/by-name/vbmeta_vendor  /vbmeta_vendor  emmc    defaults                                            flags=display="VBMeta Vendor";backup=1;flashimg=1;slotselect
 
 # Storage & USB OTG
 /dev/block/sdg1                              /usb_otg     vfat    nosuid,nodev                                        flags=display="USB-OTG";storage;wipeingui;removable
