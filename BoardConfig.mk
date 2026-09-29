@@ -84,17 +84,10 @@ BOARD_QTI_DYNAMIC_PARTITIONS_PARTITION_LIST := \
     vendor \
     vendor_dlkm \
     odm \
-    odm_dlkm \
-    my_product \
-    my_engineering \
-    my_stock \
-    my_carrier \
-    my_region \
-    my_bigball \
-    my_heytap \
-    my_manifest \
-    my_company \
-    my_preload
+    odm_dlkm
+BOARD_DYNAMIC_PARTITIONS_PARTITION_LIST := \
+    system vendor product system_ext odm vendor_dlkm odm_dlkm \
+    my_product my_engineering my_stock my_carrier my_region my_bigball my_heytap my_manifest my_company my_preload
 
 BOARD_RECOVERYIMAGE_PARTITION_SIZE := 0x06400000
 
