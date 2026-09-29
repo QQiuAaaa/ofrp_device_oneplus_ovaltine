@@ -19,11 +19,11 @@ on:
       DEVICE_TREE:
         description: 'OrangeFox 设备树'
         required: true
-        default: 'https://github.com/QQiuAaaa/ofrp_device_oneplus_ovaltine-fox_12.1'
+        default: 'https://github.com/QQiuAaaa/ofrp_device_oneplus_ovaltine-fox'
       DEVICE_TREE_BRANCH:
         description: 'OrangeFox 设备树分支'
         required: true
-        default: 'main'
+        default: 'fox_12.1'
       DEVICE_PATH:
         description: '输入你的设备路径'
         required: true
@@ -111,15 +111,6 @@ jobs:
           cd sync
           ./orangefox_sync.sh --branch ${{ inputs.MANIFEST_BRANCH }} --path ${GITHUB_WORKSPACE}/OrangeFox/fox_${{ inputs.MANIFEST_BRANCH }}
 
-      - name: 📡 修复 fox_14.1 WLAN 支持
-        if: inputs.MANIFEST_BRANCH == '0.0'
-        run: |
-          cd ${GITHUB_WORKSPACE}/OrangeFox/fox_${{ inputs.MANIFEST_BRANCH }}
-          git clone https://github.com/adontoo/android_external_libmicrohttpd -b ofox-14.1 external/libmicrohttpd
-          rm -rf bionic
-          git clone https://github.com/adontoo/OrangeFox-android_platform_bionic bionic
-          cd ${GITHUB_WORKSPACE}/OrangeFox/fox_${{ inputs.MANIFEST_BRANCH }}/bootable/recovery
-          git fetch https://github.com/ymdzq/OrangeFox_Recovery fox_14.1 && git cherry-pick 4aaf601 99e35fe 1ccd5e3
 
       - name: 📥 克隆设备树源码
         run: |
