@@ -77,7 +77,25 @@ BOARD_FLASH_BLOCK_SIZE := 262144 # (BOARD_KERNEL_PAGESIZE * 64)
 BOARD_SUPER_PARTITION_SIZE := 11274289152
 BOARD_SUPER_PARTITION_GROUPS := qti_dynamic_partitions
 BOARD_QTI_DYNAMIC_PARTITIONS_SIZE := 11270094848 # BOARD_SUPER_PARTITION_SIZE - 4MB
-BOARD_QTI_DYNAMIC_PARTITIONS_PARTITION_LIST := vendor vendor_dlkm odm
+BOARD_QTI_DYNAMIC_PARTITIONS_PARTITION_LIST := \
+    system \
+    system_ext \
+    product \
+    vendor \
+    vendor_dlkm \
+    odm \
+    odm_dlkm \
+    my_product \
+    my_engineering \
+    my_stock \
+    my_carrier \
+    my_region \
+    my_bigball \
+    my_heytap \
+    my_manifest \
+    my_company \
+    my_preload
+
 BOARD_RECOVERYIMAGE_PARTITION_SIZE := 0x06400000
 
 # Workaround for error copying vendor files to recovery ramdisk
@@ -146,7 +164,7 @@ TW_SUPPORT_INPUT_AIDL_HAPTICS_FQNAME := "IVibrator/default"
 
 TW_STATUS_ICONS_ALIGN := center
 TW_CUSTOM_CPU_TEMP_PATH := "/sys/devices/virtual/thermal/thermal_zone39/temp"
-TW_DEFAULT_BRIGHTNESS := 420
+TW_DEFAULT_BRIGHTNESS := 1024
 TW_MAX_BRIGHTNESS := 4095
 TW_BRIGHTNESS_PATH := "/sys/class/backlight/panel0-backlight/brightness"
 TW_QCOM_ATS_OFFSET := 1666528204500
