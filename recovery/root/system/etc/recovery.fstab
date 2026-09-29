@@ -1,0 +1,35 @@
+# Android fstab file for OrangeFox Recovery (OnePlus 11R - udon / aston / CPH2487)
+# <src>                                      <mnt_point>  <type>  <mnt_flags and options>                             <fs_mgr_flags>
+
+# Dynamic Super Partitions
+system                                       /system      erofs   ro                                                  wait,slotselect,logical,first_stage_mount
+system_ext                                   /system_ext  erofs   ro                                                  wait,slotselect,logical,first_stage_mount
+product                                      /product     erofs   ro                                                  wait,slotselect,logical,first_stage_mount
+vendor                                       /vendor      erofs   ro                                                  wait,slotselect,logical,first_stage_mount
+odm                                          /odm         erofs   ro                                                  wait,slotselect,logical,first_stage_mount
+vendor_dlkm                                  /vendor_dlkm erofs   ro                                                  wait,slotselect,logical,first_stage_mount
+odm_dlkm                                     /odm_dlkm    erofs   ro                                                  wait,slotselect,logical,first_stage_mount
+
+# Flashable Images & Boot Partitions
+/dev/block/bootdevice/by-name/boot           /boot        emmc    defaults                                            flags=display="Boot";backup=1;flashimg=1;slotselect
+/dev/block/bootdevice/by-name/init_boot      /init_boot   emmc    defaults                                            flags=display="Init Boot";backup=1;flashimg=1;slotselect
+/dev/block/bootdevice/by-name/vendor_boot    /vendor_boot emmc    defaults                                            flags=display="Vendor Boot";backup=1;flashimg=1;slotselect
+/dev/block/bootdevice/by-name/dtbo           /dtbo        emmc    defaults                                            flags=display="DTBO";backup=1;flashimg=1;slotselect
+/dev/block/bootdevice/by-name/recovery       /recovery    emmc    defaults                                            flags=display="Recovery";backup=1;flashimg=1;slotselect
+/dev/block/bootdevice/by-name/super          /super       emmc    defaults                                            flags=display="Super Partition";backup=1;flashimg=1
+
+# Userdata & Metadata with Wrappedkey Encryption
+/dev/block/bootdevice/by-name/userdata       /data        f2fs    noatime,nosuid,nodev,discard,inline_xattr,reserve_root=32768,resgid=1065,fsync_mode=nobarrier  latemount,wait,check,formattable,fileencryption=aes-256-xts:aes-256-cts:v2+inlinecrypt_optimized+wrappedkey_v0,metadata_encryption=aes-256-xts:wrappedkey_v0,keydirectory=/metadata/vold/metadata_encryption,quota,reservedsize=128M,sysfs_path=/sys/devices/platform/soc/1d84000.ufshc,checkpoint=fs
+/dev/block/bootdevice/by-name/metadata       /metadata    ext4    noatime,nosuid,nodev,discard                        wait,check,formattable,first_stage_mount
+/dev/block/bootdevice/by-name/persist        /persist     ext4    noatime,nosuid,nodev                                flags=display="Persist";backup=1
+
+# Modem & Firmware
+/dev/block/bootdevice/by-name/modem          /modem       emmc    defaults                                            flags=display="Modem / Baseband";backup=1;slotselect
+/dev/block/bootdevice/by-name/bluetooth      /bluetooth   emmc    defaults                                            flags=display="Bluetooth Firmware";backup=1;slotselect
+/dev/block/bootdevice/by-name/dsp            /dsp         emmc    defaults                                            flags=display="DSP Firmware";backup=1;slotselect
+/dev/block/bootdevice/by-name/vbmeta         /vbmeta      emmc    defaults                                            flags=display="VBMeta";backup=1;flashimg=1;slotselect
+/dev/block/bootdevice/by-name/vbmeta_system  /vbmeta_sys  emmc    defaults                                            flags=display="VBMeta System";backup=1;flashimg=1;slotselect
+/dev/block/bootdevice/by-name/vbmeta_vendor  /vbmeta_ven  emmc    defaults                                            flags=display="VBMeta Vendor";backup=1;flashimg=1;slotselect
+
+# Storage & USB OTG
+/dev/block/sdg1                              /usb_otg     vfat    nosuid,nodev                                        flags=display="USB-OTG";storage;wipeingui;removable
