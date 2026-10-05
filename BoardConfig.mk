@@ -23,6 +23,43 @@
 # *not* include it on all devices, so it is safe even with hardware-specific
 # components.
 
+# Building with minimal manifest
+ALLOW_MISSING_DEPENDENCIES                      := true
+BUILD_BROKEN_DUP_RULES                          := true
+BUILD_BROKEN_ELF_PREBUILT_PRODUCT_COPY_FILES    := true
+
+BUILD_BROKEN_NINJA_USES_ENV_VARS    += RTIC_MPGEN
+BUILD_BROKEN_PLUGIN_VALIDATION      := soong-libaosprecovery_defaults soong-libguitwrp_defaults soong-libminuitwrp_defaults soong-vold_defaults
+
+# A/B
+AB_OTA_PARTITIONS := \
+    boot \
+    vendor_boot \
+    dtbo \
+    odm \
+    odm_dlkm \	
+    product \
+    system \
+    system_ext \
+    vbmeta \
+    vbmeta_system \
+    vbmeta_vendor \
+    vendor \
+    vendor_dlkm
+
+# AB partitions for oplus
+AB_OTA_PARTITIONS += \
+    my_bigball \
+    my_carrier \
+    my_company \
+    my_engineering \
+    my_heytap \
+    my_manifest \
+    my_preload \
+    my_product \
+    my_region \
+    my_stock
+
 # SDK
 BOARD_SYSTEMSDK_VERSIONS := 31
 
@@ -86,9 +123,13 @@ BOARD_QTI_DYNAMIC_PARTITIONS_PARTITION_LIST := \
     odm \
     odm_dlkm
 
+BOARD_QTI_DYNAMIC_PARTITIONS_PARTITION_LIST += my_bigball my_carrier my_company my_engineering my_heytap my_manifest my_preload my_product my_region my_stock
+
 BOARD_RECOVERYIMAGE_PARTITION_SIZE := 0x06400000
 
 # Workaround for error copying vendor files to recovery ramdisk
+BOARD_ODMIMAGE_FILE_SYSTEM_TYPE := ext4
+TARGET_COPY_OUT_ODM             := odm
 TARGET_COPY_OUT_VENDOR := vendor
 
 # Rules
