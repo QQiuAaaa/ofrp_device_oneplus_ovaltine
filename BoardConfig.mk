@@ -123,8 +123,6 @@ BOARD_QTI_DYNAMIC_PARTITIONS_PARTITION_LIST := \
     odm \
     odm_dlkm
 
-BOARD_QTI_DYNAMIC_PARTITIONS_PARTITION_LIST += my_bigball my_carrier my_company my_engineering my_heytap my_manifest my_preload my_product my_region my_stock
-
 BOARD_RECOVERYIMAGE_PARTITION_SIZE := 0x06400000
 
 # Workaround for error copying vendor files to recovery ramdisk
