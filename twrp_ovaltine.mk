@@ -18,7 +18,7 @@
 #
 
 # Define hardware platform
-PRODUCT_PLATFORM := ukee
+PRODUCT_PLATFORM := taro
 
 #
 #
